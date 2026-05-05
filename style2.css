@@ -74,96 +74,15 @@ body {
 
 /* --- FOOTER --- */
 footer {
-    padding: 80px 8% 30px;
-    background-color: var(--deep-sage);
-    color: var(--white);
-}
-
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 50px;
-}
-
-.footer-column {
-    flex: 1;
-    min-width: 280px;
-}
-
-.footer-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-}
-
-.footer-column h4 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    margin-bottom: 25px;
-    position: relative;
-    padding-bottom: 10px;
-}
-
-.footer-column h4::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 40px;
-    height: 1px;
-    background: var(--soft-pink);
-}
-
-.social-links {
-    display: flex;
-    gap: 15px;
-    margin-top: 25px;
-}
-
-.social-links a {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1px solid rgba(244, 225, 210, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-decoration: none;
-    transition: 0.4s;
-}
-
-.social-links a:hover {
-    background: var(--soft-pink);
-    color: var(--deep-sage);
-    transform: translateY(-5px);
-}
-
-.contact-info p {
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    font-size: 0.95rem;
-}
-
-.contact-info i {
-    color: var(--soft-pink);
-}
-
-.footer-bottom {
+    padding: 40px;
     text-align: center;
-    margin-top: 60px;
-    padding-top: 30px;
-    border-top: 1px solid rgba(244, 225, 210, 0.1);
-    font-size: 0.8rem;
-    opacity: 0.8;
-}
+    background-color: var(--deep-sage);
+    color: var(--soft-pink);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}   
 
-/* ==========================================================================
-   3. HOME PAGE (HERO SECTION)
+3. HOME PAGE (HERO SECTION)
    ========================================================================== */
 .hero {
     height: 80vh;
