@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection Menu | L'ART DE TISSA</title>
+    <link rel="stylesheet" href="style2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* CSS Sidebar Keranjang */
+        .cart-sidebar {
+            position: fixed;
+            top: 0; right: -400px;
+            width: 350px;
+            height: 100%;
+            background: #fff;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 10001;
+            transition: 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .cart-sidebar.active { right: 0; }
+        .cart-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 10000;
+            display: none;
+        }
+        .cart-overlay.active { display: block; }
+        .cart-header {
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 20px;
+        }
+        .cart-header h2 { font-family: 'Playfair Display'; color: #718355; margin: 0; }
+        .close-cart { cursor: pointer; font-size: 1.2rem; }
+        .cart-items-container { flex: 1; overflow-y: auto; }
+        .cart-item {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #fafafa;
+        }
+        .cart-item-info h4 { font-size: 0.9rem; margin: 0; color: #444; }
+        .qty-controls { display: flex; align-items: center; gap: 10px; }
+        .qty-btn { 
+            background: #f4f4f4; border: none; width: 25px; height: 25px; 
+            border-radius: 5px; cursor: pointer; 
+        }
+        .cart-footer { border-top: 1px solid #eee; padding-top: 20px; margin-top: 10px; }
+        .btn-checkout {
+            display: block; width: 100%; padding: 12px;
+            background: #97A97C; color: white; text-align: center;
+            text-decoration: none; border-radius: 8px; font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <i class="fas fa-times close-cart" onclick="toggleCart()"></i>
+        </div>
+        <div class="cart-items-container" id="sideCartItems"></div>
+        <div class="cart-footer">
+            <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-weight:600;">
+                <span>Total</span>
+                <span id="sideCartTotal">IDR 0</span>
+            </div>
+            <a href="order.html" class="btn-checkout">Go to Order</a>
+        </div>
+    </div>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo-text">L'ART DE TISSA</a>
+            <ul class="nav-menu">
+                <li><a href="indek2.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="produk.html" class="nav-link active">Products</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="javascript:void(0)" class="nav-link cart-highlight" onclick="toggleCart()">
+                    <i class="fas fa-shopping-bag"></i> (<span id="cartCount">0</span>)
+                </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="menu-page">
+        <section class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Nos Créations</span>
+                <h2 class="section-title">Our Collections</h2> <div class="divider"></div>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="img-container">
+                        <img src="foto/fleur de matcha-fraise.jpeg" alt="Fleur de Matcha">
+                        <div class="category-tag">Petite Cake</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Fleur de Matcha</h3>
+                        <p class="product-desc">A pure blend of premium matcha with a fresh strawberry sensation.</p>
+                        <div class="price">IDR 58,000</div>
+                        <button class="btn-add-overlay" onclick="tambahKeranjang('Fleur de Matcha', 58000, event)">
+                            <i class="fas fa-shopping-basket"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="img-container">
+                        <img src="foto/nuage de tissa.jpeg" alt="Nuage de Vanille">
+                        <div class="category-tag">Artisanal Pastry</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Nuage de Vanille</h3>
+                        <p class="product-desc">Soft pastry as light as a cloud, infused with bourbon vanilla aroma.</p>
+                        <div class="price">IDR 42,000</div>
+                        <button class="btn-add-overlay" onclick="tambahKeranjang('Nuage de Vanille', 42000, event)">
+                            <i class="fas fa-shopping-basket"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="img-container">
+                        <img src="foto/ruby tartlet.jpeg" alt="Rubis Tartlet">
+                        <div class="category-tag">Tartlet</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Rubis Tartlet</h3>
+                        <p class="product-desc">A luxurious chocolate tartlet with an elegant touch of sea salt.</p>
+                        <div class="price">IDR 45,000</div>
+                        <button class="btn-add-overlay" onclick="tambahKeranjang('Rubis Tartlet', 45000, event)">
+                            <i class="fas fa-shopping-basket"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="img-container">
+                        <img src="foto/Rose Pistachio Cake.jfif" alt="Pistache Rose">
+                        <div class="category-tag">Signature Cake</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Pistache Rose</h3>
+                        <p class="product-desc">Savory pistachio cake infused with a soothing rose fragrance.</p>
+                        <div class="price">IDR 62,000</div>
+                        <button class="btn-add-overlay" onclick="tambahKeranjang('Pistache Rose', 62000, event)">
+                            <i class="fas fa-shopping-basket"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="img-container">
+                        <img src="foto/Vanilla Cloud Pastry.jfif" alt="Nuage Blanc">
+                        <div class="category-tag">Artisanal</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Nuage Blanc</h3>
+                        <p class="product-desc">Pure white pastry delight with an incredibly smooth texture.</p>
+                        <div class="price">IDR 38,000</div>
+                        <button class="btn-add-overlay" onclick="tambahKeranjang('Nuage Blanc', 38000, event)">
+                            <i class="fas fa-shopping-basket"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="img-container">
+                        <img src="foto/Matcha Berry Entremet.jfif" alt="Forêt Verte">
+                        <div class="category-tag">Entremet</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Forêt Verte</h3>
+                        <p class="product-desc">Layers of matcha mousse with a surprising red berry core.</p>
+                        <div class="price">IDR 65,000</div>
+                        <button class="btn-add-overlay" onclick="tambahKeranjang('Forêt Verte', 65000, event)">
+                            <i class="fas fa-shopping-basket"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="img-container">
+                        <img src="foto/Gold Leaf Chocolate Noir.jfif" alt="Noir Or Luxe">
+                        <div class="category-tag">Luxury Cake</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Noir Or Luxe</h3>
+                        <p class="product-desc">Intense dark chocolate adorned with pure gold leaf.</p>
+                        <div class="price">IDR 68,000</div>
+                        <button class="btn-add-overlay" onclick="tambahKeranjang('Noir Or Luxe', 68000, event)">
+                            <i class="fas fa-shopping-basket"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="img-container">
+                        <img src="foto/Strawberry Eton Mess Box.jfif" alt="Fraise de Mess">
+                        <div class="category-tag">Dessert Box</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Fraise de Mess</h3>
+                        <p class="product-desc">A blend of crunchy meringue, cream, and strawberries in a box.</p>
+                        <div class="price">IDR 52,000</div>
+                        <button class="btn-add-overlay" onclick="tambahKeranjang('Fraise de Mess', 52000, event)">
+                            <i class="fas fa-shopping-basket"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="img-container">
+                        <img src="foto/Douceur de Limon.jfif" alt="Soleil de Limon">
+                        <div class="category-tag">Petite Cake</div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Soleil de Limon</h3>
+                        <p class="product-desc">Bright and fresh lemon curd with a texture as smooth as silk.</p>
+                        <div class="price">IDR 55,000</div>
+                        <button class="btn-add-overlay" onclick="tambahKeranjang('Soleil de Limon', 55000, event)">
+                            <i class="fas fa-shopping-basket"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+            <p>&copy; 2026 L'ART DE TISSA. Elegance in every bite.</p>
+    </footer>
+
+    <script src="js_kue.js"></script>
+</body>
+</html>

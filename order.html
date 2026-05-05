@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | L'ART DE TISSA</title>
+    <link rel="stylesheet" href="style2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body class="order-page">
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo-text">L'ART DE TISSA</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="produk.html" class="nav-link">Produk</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="order.html" class="nav-link">Order</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="checkout-section">
+            <h2 class="section-title">Finalize Your Order</h2>
+            <div class="divider"></div>
+
+            <div class="checkout-flex">
+                <div class="cart-summary">
+                    <h3>Shopping Bag</h3>
+                    <div id="keranjangList" class="order-list">
+                        </div>
+                    <div class="total-box">
+                        <span>Total Amount</span>
+                        <span class="total-price">IDR <span id="totalHarga">0</span></span>
+                    </div>
+                </div>
+
+                <div class="form-container">
+                    <h3>Delivery Details</h3>
+                    <form id="orderForm">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="nama" placeholder="Contoh: Tissa Putri" required>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>WhatsApp</label>
+                                <input type="tel" id="wa" placeholder="0812..." required>
+                            </div>
+                            <div class="form-group">
+                                <label>Payment</label>
+                                <select id="pembayaran">
+                                    <option value="BCA Transfer">BCA Transfer</option>
+                                    <option value="E-Wallet (Dana/OVO)">E-Wallet (Dana/OVO)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Shipping Address</label>
+                            <textarea id="alamat" rows="2" placeholder="Nama jalan, nomor rumah..." required></textarea>
+                        </div>
+                        <button type="button" class="btn-sage-order" onclick="buatStruk()">PLACE ORDER NOW</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <div id="strukOverlay" class="struk-overlay">
+            <div class="struk-card">
+                <div id="strukToDownload">
+                    <div id="strukContent">
+                        </div>
+                </div>
+
+                <div class="struk-actions">
+                    <button id="btnDownload" class="btn-download-jpg" onclick="downloadStruk()">
+                        <i class="fas fa-image"></i> Download Receipt (JPG)
+                    </button>
+                    
+                    <button class="btn-back-shop" onclick="tutupStruk()">
+                        Kembali Berbelanja
+                    </button>
+                    
+                    <p>
+                        Tunggu sebentar setelah klik download.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js_kue.js"></script>
+</body>
+</html>

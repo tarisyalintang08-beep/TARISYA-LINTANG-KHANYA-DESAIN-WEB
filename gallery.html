@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Gallery | L'ART DE TISSA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Custom adjustment to prevent the Gallery from hitting laptop screen edges */
+        .gallery-page .container {
+            max-width: 1200px; /* Maximum content width limit */
+            margin: 0 auto;    /* Centers the content */
+            padding: 60px 5%;  /* 5% spacing from left-right edges */
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px; /* Spacing between items, kept small for aesthetics */
+        }
+
+        @media (max-width: 768px) {
+            .gallery-page .container {
+                padding: 40px 15px; /* Smaller spacing for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo-text">L'ART DE TISSA</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="produk.html" class="nav-link">Products</a></li>
+                <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
+                <li><a href="order.html" class="nav-link">Order</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="gallery-page">
+        <section class="container">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <span class="section-subtitle">Visual Experience</span>
+                <h2 class="section-title">Visual Gallery</h2>
+                <div class="divider"></div>
+                <p class="gallery-desc">A portrait of our dedication in every detail of creation.</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="foto/gallery1.jpeg" alt="Signature Cake">
+                    <div class="overlay"><span>Signature Cake</span></div>
+                </div>
+                <div class="gallery-item tall">
+                    <img src="foto/gallery4.jpeg" alt="Cake Making Process">
+                    <div class="overlay"><span>Our Process</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="foto/gallery5.jpeg" alt="Ingredients">
+                    <div class="overlay"><span>Fine Ingredients</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="foto/gallery6.jpeg" alt="Handcrafting Cake">
+                    <div class="overlay"><span>Craftsmanship</span></div>
+                </div>
+                <div class="gallery-item wide">
+                    <img src="foto/gallery7.jpeg" alt="Mixer in Action">
+                    <div class="overlay"><span>The Art of Mixing</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="foto/gallery2.jpeg" alt="Boutique Interior">
+                    <div class="overlay"><span>Our Boutique</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="foto/gallery3.jpeg" alt="Store Ambience">
+                    <div class="overlay"><span>Ambience</span></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+            <p>&copy; 2026 L'ART DE TISSA. Elegance in every bite.</p>
+    </footer>
+
+</body>
+</html>
